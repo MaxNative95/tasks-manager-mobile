@@ -42,7 +42,7 @@ npx expo start
 Make sure your backend API is running and reachable via the configured API_URL.
 
 Folder Structure
-
+```
 src/
 ├── components/
 ├── context/
@@ -54,7 +54,7 @@ src/
 ├── services/
 │   └── api.ts
 └── App.tsx
-
+```
 Create a .env file in the root:
 API_URL=http://your-backend-ip-or-domain/api
 
