@@ -37,6 +37,7 @@ yarn install
 3. Start the app: 
 npx expo start
 
+```
 
 Make sure your backend API is running and reachable via the configured API_URL.
 
