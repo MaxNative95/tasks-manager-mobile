@@ -61,8 +61,6 @@ API_URL=http://your-backend-ip-or-domain/api
 
 ## Recommendations and Future Improvements
 
-- Add user registration directly from the app.
-- Validate forms and inputs on both frontend and backend.
 - Implement better error handling and user feedback on the mobile app.
 - Add loading spinners or skeletons for API calls.
 - Improve token expiration handling and auto-logout.
