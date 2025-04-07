@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { View, Text, StyleSheet, Button, FlatList, ActivityIndicator, RefreshControl, Dimensions } from 'react-native';
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../context/AuthContext';
 import { Card, TextInput, Button as PaperButton, Dialog, Portal, Menu } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useFocusEffect } from '@react-navigation/native';
 
 export type TaskStatus = 'To Do' | 'In Progress' | 'Completed';
 
@@ -26,6 +25,12 @@ export default function HomeScreen({ navigation }: any) {
     const [editedTitle, setEditedTitle] = useState('');
     const [menuVisible, setMenuVisible] = useState(false);
     const { width } = Dimensions.get("window");
+
+    useFocusEffect(
+        useCallback(() => {
+            fetchTasks();
+        }, [])
+    );
 
     const openEditDialog = (task: Task) => {
         setSelectedTask(task);
@@ -146,7 +151,6 @@ export default function HomeScreen({ navigation }: any) {
             <View style={styles.buttonsContainer}>
                 <Button title="Create Task" onPress={handleCreateTask} />
             </View>
-            <Text style={styles.header}>My tasks (pull down to refresh)</Text> {/*PULL DOWN TO REFRESH, HAD NO TIME TO INVEST IN MORE FEATURES*/}
             {loading ? (
                 <ActivityIndicator size="large" color="#007bff" />
             ) : (
